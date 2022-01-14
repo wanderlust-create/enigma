@@ -1,5 +1,4 @@
 require './lib/enigma'
-# require './lib/'
 require 'pry'
 
 RSpec.describe 'Enigma' do
@@ -9,10 +8,21 @@ RSpec.describe 'Enigma' do
     expect(encrypt).to be_a Enigma
   end
 
+  it 'can read the message to be encrypted' do
+
+    expected = (String)
+
+    expect(encrypt.message.class).to eq(String)
+  end
 
   it 'can generate random 10 digit number as string' do
-  # binding.pry
-    expect(encrypt.generate_key.size).to be true
+
+    expect(encrypt.generate_key.size).to eq(5)
+  end
+
+  it'can generate time as DDMMYY' do
+
+    expect(encrypt.date_code.size).to eq(6)
   end
 end
 
