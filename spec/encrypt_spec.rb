@@ -24,6 +24,10 @@ RSpec.describe 'Enigma' do
 
     expect(encrypt.date_code.size).to eq(6)
   end
+
+  it 'can generate the a_shift' do
+    expect(encrypt.generate_a_shift('12345','130122')).to eq(16)
+  end
 end
 
   #

@@ -1,17 +1,18 @@
+require './lib/shiftable'
 require 'pry'
 
 class Enigma
+  include Shiftable
   attr_reader :key, :message, :date
-
 
   def initialize (key = self.generate_key, date = Time.new)
     @message = File.read('message.txt')
-    @key = generate_key
-    @date = Time.new
+    @key = key
+    @date = date
   end
 
   def generate_key
-    5.times.map{rand(9)}.join.rjust(5,'0')
+    5.times.map{rand(9)}.join
   end
 
   def date_code
@@ -22,6 +23,10 @@ class Enigma
     code_data.flatten.join
   end
 
+  def generate_a_shift(key, date)
+    a_shift(key, date)
+  end
+
   def encrypt
   end
 
@@ -30,8 +35,8 @@ class Enigma
 
 end
 
-go = Enigma.new
-
-# binding.pry
-
-p
+# go = Enigma.new
+#
+# # binding.pry
+#
+# p

@@ -12,7 +12,7 @@ RSpec.describe 'Shiftable' do
   end
 
   it 'can calculate the offsets' do
-    expect(Shiftable.calculate_offsets('130122',1)).to eq(8)
+    expect(Shiftable.calculate_offsets('130122',0)).to eq(4)
   end
 
   it 'can calculate the a_shift' do
@@ -30,5 +30,7 @@ RSpec.describe 'Shiftable' do
   it 'can calculate the d_shift' do
     expect(Shiftable.d_shift('12345','130122')).to eq(49)
   end
+
+ 
 
 end
