@@ -4,14 +4,14 @@ class Enigma
   attr_reader :key, :message, :date
 
 
-  def initialize (key = self.generate_key)
+  def initialize (key = self.generate_key, date = Time.new)
     @message = File.read('message.txt')
     @key = generate_key
     @date = Time.new
   end
 
   def generate_key
-    10.times.map{rand(10)}.join
+    5.times.map{rand(9)}.join
   end
 
   def date_code

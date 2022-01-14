@@ -18,7 +18,7 @@ RSpec.describe 'Enigma' do
 
   it 'can generate random 10 digit number as string' do
 
-    expect(encrypt.generate_key.size).to eq(10)
+    expect(encrypt.generate_key.size).to eq(5)
   end
 
   it'can generate time as DDMMYY' do
