@@ -16,19 +16,19 @@ RSpec.describe 'Shiftable' do
   end
 
   it 'can calculate the a_shift' do
-    expect(Shiftable.a_shift('12345','130122')).to eq(20)
+    expect(Shiftable.a_shift('12345','130122')).to eq(16)
   end
 
   it 'can calculate the b_shift' do
-    expect(Shiftable.b_shift('12345','130122')).to eq(20)
+    expect(Shiftable.b_shift('12345','130122')).to eq(31)
   end
 
   it 'can calculate the c_shift' do
-    expect(Shiftable.c_shift('12345','130122')).to eq(20)
+    expect(Shiftable.c_shift('12345','130122')).to eq(42)
   end
 
   it 'can calculate the d_shift' do
-    expect(Shiftable.d_shift('12345','130122')).to eq(20)
+    expect(Shiftable.d_shift('12345','130122')).to eq(49)
   end
 
 end

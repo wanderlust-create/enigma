@@ -2,9 +2,9 @@ require "pry"
 
 module Shiftable
 
-def self.square_me(date)
-  date.to_i ** 2
-end
+  def self.square_me(date)
+    date.to_i ** 2
+  end
 
   def self.calculate_keys(key, position1, position2)
     key_array = key.split(//)
@@ -21,8 +21,25 @@ end
 
   def self.a_shift(key, date)
     a_shift_key = calculate_keys(key, 0, 1)
+    a_shift_offset = calculate_offsets(date, 0)
+    shift = a_shift_key + a_shift_offset
+  end
+
+  def self.b_shift(key, date)
+    a_shift_key = calculate_keys(key, 1, 2)
     a_shift_offset = calculate_offsets(date, 1)
     shift = a_shift_key + a_shift_offset
   end
 
+  def self.c_shift(key, date)
+    a_shift_key = calculate_keys(key, 2, 3)
+    a_shift_offset = calculate_offsets(date, 2)
+    shift = a_shift_key + a_shift_offset
+  end
+
+  def self.d_shift(key, date)
+    a_shift_key = calculate_keys(key, 3, 4)
+    a_shift_offset = calculate_offsets(date, 3)
+    shift = a_shift_key + a_shift_offset
+  end
 end
