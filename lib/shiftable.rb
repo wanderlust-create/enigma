@@ -19,4 +19,10 @@ end
     specific_date.join.to_i
   end
 
+  def self.a_shift(key, date)
+    a_shift_key = calculate_keys(key, 0, 1)
+    a_shift_offset = calculate_offsets(date, 1)
+    shift = a_shift_key + a_shift_offset
+  end
+
 end
