@@ -2,10 +2,10 @@ class Encrypt
   # attr_reader :message,
   #             :,
 
-  def initialize(message, key, date)
-    @message = message
-    @key = key
-    @date = date
+  def initialize (key = self.key_generator)
+    # @message = message
+    @key = 
+    # @date = date
   end
 
   def key_generator

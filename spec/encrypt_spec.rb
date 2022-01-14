@@ -3,7 +3,7 @@ require './lib/encrypt'
 require 'pry'
 
 RSpec.describe 'Encrypt' do
-  let(:secret) {Encrypt.new}
+  let(:encrypt) {Encrypt.new}
   # let(:) {}
   # let(:) {}
   # let(:) {}
@@ -11,7 +11,7 @@ RSpec.describe 'Encrypt' do
 
 
   it 'exists' do
-    expect(secret).to be_a Encrypt
+    expect(encrypt).to be_a Encrypt
   end
 
   # it 'has attributes' do
@@ -19,13 +19,13 @@ RSpec.describe 'Encrypt' do
   #   expect().to eq()
   #   expect().to eq()
   # end
-end
+# end
 
-  # it '' do
-  #   expect().to eq()
-  #   expect().to eq()
-  #   expect().to eq()
-  # end
+  it 'can generate random 10 digit number as string' do
+
+    expect(encrypt.key_generator.size).to eq(10)
+  end
+end
 
   #
   # it '' do
