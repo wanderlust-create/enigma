@@ -5,11 +5,10 @@ RSpec.describe 'Encryptable' do
 
   # it 'can read array positions' do
   #
-  #   expect(Encryptable.read_position(13).to eq('m')
-  # end
-  #
-  # it 'can calculate the limited positions to shift' do
-  #
+  it 'can create a message array' do
+    expected = ["i", " ", "a", "m", " ", "l", "o", "v", "e", "d", "3"]
+    expect(Encryptable.meassage_array("<i am loved3\n")).to eq(expected)
+  end
   #   expect(Encryptable.shift_position(19, 66).to eq('d')
   # end
 

@@ -28,6 +28,10 @@ class Enigma
   end
 
   def encrypt
+    meassage_array = @message.strip.split(//)
+    meassage_array.delete_at(0)
+    meassage_array
+
   end
 
   def decrypt
@@ -35,8 +39,9 @@ class Enigma
 
 end
 
-# go = Enigma.new
-#
-# # binding.pry
-#
-# p
+go = Enigma.new
+go.encrypt()
+
+binding.pry
+
+p
