@@ -24,6 +24,6 @@ end
 
 go = Enigma.new
 
-binding.pry
+# binding.pry
 
 p
