@@ -1,29 +1,18 @@
-require './lib/encrypt'
+require './lib/enigma'
 # require './lib/'
 require 'pry'
 
-RSpec.describe 'Encrypt' do
-  let(:encrypt) {Encrypt.new}
-  # let(:) {}
-  # let(:) {}
-  # let(:) {}
-
-
+RSpec.describe 'Enigma' do
+  let(:encrypt) {Enigma.new}
 
   it 'exists' do
-    expect(encrypt).to be_a Encrypt
+    expect(encrypt).to be_a Enigma
   end
 
-  # it 'has attributes' do
-  #   expect().to eq()
-  #   expect().to eq()
-  #   expect().to eq()
-  # end
-# end
 
   it 'can generate random 10 digit number as string' do
-
-    expect(encrypt.key_generator.size).to eq(10)
+  # binding.pry
+    expect(encrypt.generate_key.size).to be true
   end
 end
 
