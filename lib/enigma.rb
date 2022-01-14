@@ -11,7 +11,7 @@ class Enigma
   end
 
   def generate_key
-    5.times.map{rand(9)}.join
+    5.times.map{rand(9)}.join.rjust(5,'0')
   end
 
   def date_code
