@@ -20,6 +20,11 @@ RSpec.describe 'Enigma' do
 
     expect(encrypt.generate_key.size).to eq(10)
   end
+
+  it'can generate time as DDMMYY' do
+
+    expect(encrypt.date_code.size).to eq(6)
+  end
 end
 
   #
