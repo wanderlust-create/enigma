@@ -2,6 +2,12 @@ require "pry"
 
 module Encryptable
 
+  def self.meassage_array(message)
+    meassage_array = message.strip.split(//)
+    meassage_array.delete_at(0)
+    meassage_array
+  end
+
   def self.shift_position(current_position, shift)
     total = current_position + shift
     caculation = (total % 27)
