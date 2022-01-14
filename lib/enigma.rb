@@ -1,8 +1,11 @@
+require 'pry'
+
 class Enigma
+  attr_reader :key, :message, :date
 
 
   def initialize (key = self.generate_key)
-    @message = gets.chomp
+    @message = File.read('message.txt')
     @key = generate_key
     # @date = date
   end
@@ -18,3 +21,9 @@ class Enigma
   end
 
 end
+
+go = Enigma.new
+
+binding.pry
+
+p

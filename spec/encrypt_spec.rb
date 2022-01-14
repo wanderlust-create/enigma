@@ -11,8 +11,8 @@ RSpec.describe 'Enigma' do
 
 
   it 'can generate random 10 digit number as string' do
-  # binding.pry
-    expect(encrypt.generate_key.size).to be true
+  binding.pry
+    expect(encrypt.generate_key.size).to eq(10)
   end
 end
 
