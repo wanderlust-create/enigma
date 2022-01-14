@@ -1,5 +1,4 @@
 require './lib/enigma'
-# require './lib/'
 require 'pry'
 
 RSpec.describe 'Enigma' do
