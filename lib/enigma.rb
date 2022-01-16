@@ -1,17 +1,29 @@
-require 'pry'
+require './lib/shiftable'
+require './lib/encryptable'
 
 class Enigma
-  attr_reader :key, :message, :date
-
+  include Shiftable
+  include Encryptable
+  attr_reader :key, :message, :date, :shifts
 
   def initialize (key = self.generate_key, date = Time.new)
     @message = File.read('message.txt')
-    @key = generate_key
-    @date = Time.new
+    @key = key
+    @date = date
+    @shifts = shifts
+  end
+
+  def shifts
+    shift_values = Array.new
+    shift_values << a_shift(@key, @date)
+    shift_values << b_shift(@key, @date)
+    shift_values << c_shift(@key, @date)
+    shift_values << d_shift(@key, @date)
+    shift_values
   end
 
   def generate_key
-    5.times.map{rand(9)}.join.rjust(5,'0')
+    5.times.map{rand(9)}.join
   end
 
   def date_code
@@ -22,15 +34,18 @@ class Enigma
     code_data.flatten.join
   end
 
-  def encrypt
+  def encrypt_now
+    encrypt_message(@message)
   end
+
 
   def decrypt
   end
 
 end
 
-go = Enigma.new
+go = Enigma.new('02715','040895')
+
 
 # binding.pry
 
