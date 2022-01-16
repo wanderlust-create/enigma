@@ -31,6 +31,22 @@ RSpec.describe 'Shiftable' do
     expect(Shiftable.d_shift('12345','130122')).to eq(49)
   end
 
- 
+  it 'can generate the a_shift' do
+    expect(Shiftable.a_shift('02715', '040895')).to eq(3)
+  end
+
+  it 'can generate the b_shift' do
+    expect(Shiftable.b_shift('02715', '040895')).to eq(27)
+  end
+
+  it 'can generate the c_shift' do
+    expect(Shiftable.c_shift('02715', '040895')).to eq(73)
+  end
+
+  it 'can generate the d_shift' do
+    expect(Shiftable.d_shift('02715', '040895')).to eq(20)
+  end
+
+
 
 end

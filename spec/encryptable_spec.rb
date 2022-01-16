@@ -2,17 +2,14 @@ require 'pry'
 require './lib/encryptable'
 
 RSpec.describe 'Encryptable' do
+  let(:array) {["<", "i", " ", "a", "m", " ", "l", "o", "v", "e", "d", "3"]}
 
-  # it 'can read array positions' do
-  #
   it 'can create a message array' do
-    expected = ["i", " ", "a", "m", " ", "l", "o", "v", "e", "d", "3"]
+    expected = ["<", "i", " ", "a", "m", " ", "l", "o", "v", "e", "d", "3"]
     expect(Encryptable.meassage_array("<i am loved3\n")).to eq(expected)
   end
-  #   expect(Encryptable.shift_position(19, 66).to eq('d')
-  # end
 
-  it 'can shift a position by argument spaces' do
+  xit 'can shift a position by argument spaces' do
     expect(Encryptable.shift_position(8,3)).to eq(11)
     expect(Encryptable.shift_position(5,27)).to eq(5)
     expect(Encryptable.shift_position(12,73)).to eq(4)
@@ -25,6 +22,27 @@ RSpec.describe 'Encryptable' do
     expect(Encryptable.shift_position(12,27)).to eq(12)
     expect(Encryptable.shift_position(4,73)).to eq(23)
 
+  end
+
+  it 'can create a hashed index from the message array' do
+
+    # array = ["i", " ", "a", "m", " ", "l", "o", "v", "e", "d", "3"]
+
+    expected = {
+      0 => "i",
+      1 => " ",
+      2 => "a",
+      3 => "m",
+      4 => " ",
+      5 => "l",
+      6 => "o",
+      7 => "v",
+      8 => "e",
+      9 => "d",
+      10 => "3"
+    }
+
+    expect(Encryptable.message_hash(array)).to eq(expected)
   end
 
 end
