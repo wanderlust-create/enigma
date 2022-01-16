@@ -1,7 +1,6 @@
 require './lib/shiftable'
 require './lib/encryptable'
 
-
 class Enigma
   include Shiftable
   include Encryptable
@@ -33,10 +32,6 @@ class Enigma
     code_data << @date.month.to_s.rjust(2,'0')
     code_data << @date.year.to_s[2..3]
     code_data.flatten.join
-  end
-
-  def generate_a_shift(key, date)
-    a_shift(key, date)
   end
 
   def encrypt_now

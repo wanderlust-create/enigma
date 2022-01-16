@@ -1,9 +1,8 @@
 require './lib/shiftable'
 require './lib/encryptable'
 require './lib/enigma'
-require 'pry'
 
-RSpec.describe 'encrypt' do
+RSpec.describe 'Shiftable' do
 
   let(:encrypt) {Enigma.new('12345','130122')}
 
@@ -50,7 +49,5 @@ RSpec.describe 'encrypt' do
   it 'can generate the d_shift' do
     expect(encrypt.d_shift('02715', '040895')).to eq(20)
   end
-
-
 
 end

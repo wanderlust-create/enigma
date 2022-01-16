@@ -1,6 +1,4 @@
 
-require "pry"
-
 module Shiftable
 
   def square_me(date)

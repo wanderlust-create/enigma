@@ -10,7 +10,7 @@ RSpec.describe 'Encryptable' do
     expect(encrypt.letter_array).to eq(expected)
   end
 
-  xit 'can shift a position by argument spaces' do
+  it 'can shift a position by argument spaces' do
     expect(encrypt.shift_position(8,3)).to eq(11)
     expect(encrypt.shift_position(5,27)).to eq(5)
     expect(encrypt.shift_position(12,73)).to eq(4)
@@ -22,7 +22,6 @@ RSpec.describe 'Encryptable' do
     expect(encrypt.shift_position(18,3)).to eq(21)
     expect(encrypt.shift_position(12,27)).to eq(12)
     expect(encrypt.shift_position(4,73)).to eq(23)
-
   end
 
   it 'can return a shifted letter' do
@@ -30,8 +29,9 @@ RSpec.describe 'Encryptable' do
     expect(encrypt.shift('v', 27)).to eq('v')
   end
 
-it 'can encrypt a message' do
+  it 'can encrypt a message' do
     expected = ('keder, ohulw!')
     expect(encrypt.encrypt_message('hello, world!')).to eq(expected)
   end
+  
 end
