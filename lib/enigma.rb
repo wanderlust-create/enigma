@@ -7,7 +7,7 @@ class Enigma
   attr_reader :key, :message, :date, :shifts
 
   def initialize (key = self.generate_key, date = Time.new)
-    @message = File.read('message.txt')
+    @message = File.read('message.txt').downcase
     @key = key
     @date = date
     @shifts = shifts

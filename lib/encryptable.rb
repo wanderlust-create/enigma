@@ -1,4 +1,3 @@
-
 module Encryptable
 
   def letter_array
