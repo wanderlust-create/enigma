@@ -1,6 +1,6 @@
 require './lib/shiftable'
 require './lib/encryptable'
-# require 'pry'
+
 
 class Enigma
   include Shiftable
@@ -11,17 +11,17 @@ class Enigma
     @message = File.read('message.txt')
     @key = key
     @date = date
-    @shifts = [3, 27, 73, 20]
+    @shifts = shifts
   end
 
-  # def shifts(@key, @date)
-  #   shift_values = Array.new
-  #   shift_values << a_shift(key, date)
-  #   shift_values << b_shift(key, date)
-  #   shift_values << c_shift(key, date)
-  #   shift_values << d_shift(key, date)
-  #   shift_values
-  # end
+  def shifts
+    shift_values = Array.new
+    shift_values << a_shift(@key, @date)
+    shift_values << b_shift(@key, @date)
+    shift_values << c_shift(@key, @date)
+    shift_values << d_shift(@key, @date)
+    shift_values
+  end
 
   def generate_key
     5.times.map{rand(9)}.join
@@ -39,25 +39,10 @@ class Enigma
     a_shift(key, date)
   end
 
-  def encrypt(message)
-    encrypt_message(message)
+  def encrypt_now
+    encrypt_message(@message)
   end
 
-  def encrypt_message(message)
-    letter_array = ("a".."z").to_a << " "
-    encrypted_message = []
-    shifts = [3, 27, 73, 20]
-    message.each_char do |letter|
-      if letter_array.include?(letter)
-        shifted_letter = shift(letter, shifts[0])
-        encrypted_message << shifted_letter
-        shifts.rotate!
-      elsif
-        encrypted_message << letter
-      end
-    end
-    encrypted_message.join
-  end
 
   def decrypt
   end

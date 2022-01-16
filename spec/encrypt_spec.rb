@@ -2,55 +2,40 @@ require './lib/enigma'
 require 'pry'
 
 RSpec.describe 'Enigma' do
-  let(:encrypt) {Enigma.new}
+  let(:encrypt) {Enigma.new('02715','040895')}
 
-  it 'exists' do
+  xit 'exists' do
     expect(encrypt).to be_a Enigma
   end
 
-  it 'can read the message to be encrypted' do
+  xit 'can read the message to be encrypted' do
 
     expected = (String)
 
     expect(encrypt.message.class).to eq(String)
   end
 
-  it 'can generate random 10 digit number as string' do
+  xit 'can generate random 10 digit number as string' do
 
     expect(encrypt.generate_key.size).to eq(5)
   end
 
-  it'can generate time as DDMMYY' do
+  # it'can generate time as DDMMYY' do
 
-    expect(encrypt.date_code.size).to eq(6)
-  end
+    # expect(encrypt.date_code.size).to eq(6)
+  # end
+
+  it 'can calculate the shifts' do
+
+  expected = [3, 27, 73, 20]
+  expect(encrypt.shifts).to eq(expected)
+end 
 
 
 
-  it 'can rotate' do
+  it 'can encrypt' do
 
     expected = ('keder, ohulw!')
-    expect(encrypt.encrypt_message('hello, world!')).to eq(expected)
+    expect(encrypt.encrypt_now).to eq(expected)
   end
 end
-
-  #
-  # it '' do
-  #   expect().to eq()
-  # end
-# end
-#
-# RSpec.describe 'Iteration ' do
-#
-#   let() {}
-
-  #
-  # it '' do
-  #   expect().to eq()
-  # end
-  #
-  # it '' do
-  #   expect().to eq()
-  # end
-#
-# end
