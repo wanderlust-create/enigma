@@ -49,7 +49,7 @@ class Enigma
 
 end
 
-go = Enigma.new
+go = Enigma.new('02715','040895')
 
 
 # binding.pry

@@ -29,7 +29,7 @@ RSpec.describe 'Enigma' do
 
   expected = [3, 27, 73, 20]
   expect(encrypt.shifts).to eq(expected)
-end 
+end
 
 
 

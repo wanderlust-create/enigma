@@ -21,12 +21,13 @@ module Encryptable
 
   def encrypt_message(message)
     message.strip!
+    shift_value = @shifts
     encrypted_message = []
     message.each_char do |letter|
       if letter_array.include?(letter)
-        shifted_letter = shift(letter, @shifts[0])
+        shifted_letter = shift(letter, shift_value[0])
         encrypted_message << shifted_letter
-        shifts.rotate!
+        shift_value.rotate!
       elsif
         encrypted_message << letter
       end
