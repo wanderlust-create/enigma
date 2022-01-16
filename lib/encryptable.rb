@@ -6,14 +6,6 @@ module Encryptable
     letter_array = ("a".."z").to_a << " "
   end
 
-  def shift(letter, which_shift)
-    letter_array = ("a".."z").to_a << " "
-    letter_index = letter_array.find_index(letter)
-    shift_to = shift_position(letter_index, which_shift)
-    return_letter = letter_array[shift_to]
-    return_letter
-  end
-
   def shift_position(letter_index, which_shift)
     total = letter_index + which_shift
     caculation = (total % 27)
@@ -21,9 +13,15 @@ module Encryptable
     return caculation unless caculation == 0
   end
 
+  def shift(letter, which_shift)
+    letter_index = letter_array.find_index(letter)
+    shift_to = shift_position(letter_index, which_shift)
+    return_letter = letter_array[shift_to]
+    return_letter
+  end
+
   def encrypt_message(message)
     message.strip!
-    letter_array = ("a".."z").to_a << " "
     encrypted_message = []
     message.each_char do |letter|
       if letter_array.include?(letter)
