@@ -1,15 +1,33 @@
-require "pry"
+# require "pry"
 
 module Encryptable
 
+  def letter_array
+    letter_array = ("a".."z").to_a << " "
+  end
+
+  def shift(letter, which_shift)
+    letter_array = ("a".."z").to_a << " "
+    letter_index = letter_array.find_index(letter)
+    shift_to = shift_position(letter_index, which_shift)
+    return_letter = letter_array[shift_to]
+    return_letter
+  end
+
+  def shift_position(letter_index, which_shift)
+    total = letter_index + which_shift
+    caculation = (total % 27)
+    return letter_index if caculation == 0
+    return caculation unless caculation == 0
+  end
 
   def encrypt_message(message)
+    message.strip!
     letter_array = ("a".."z").to_a << " "
     encrypted_message = []
-    shifts = [3, 27, 73, 20]
     message.each_char do |letter|
       if letter_array.include?(letter)
-        shifted_letter = shift(letter, shifts[0])
+        shifted_letter = shift(letter, @shifts[0])
         encrypted_message << shifted_letter
         shifts.rotate!
       elsif
@@ -18,66 +36,4 @@ module Encryptable
     end
     encrypted_message.join
   end
-
-  # def self.meassage_array(message)
-  #   message.strip.split(//)
-  # end
-
-
-
-#   def self.message_hash(message_array)
-#     message_with_index = {}
-#     shifts = [:a, :b, :c, :d]
-#     message_array.each_with_index do |letter, index|
-#       if letter_array.include?(letter)
-#         shift_type = index % 4
-#         (message_with_index[shifts[shift_type]] ||= []) << letter
-#     else
-#
-#     end
-#     end
-#     message_with_index
-#   binding.pry
-#   end
-#
-#   length = sentence.length
-# sentence.each_char.with_index(1){|char, i|
-#   if i == length
-#     ...
-#   end
-
-  def self.letter_array
-    ("a".."z").to_a << " "
-  end
-
-  def shift(char, which_shift)
-  end
-
-  # def self.message_array(message_array)
-  #   array = []
-  #   message_array.each_with_index {|item, index|
-  #     hashed[index] = item }
-  # binding.pry
-  #   hashed
-  # end
-
-  def shift_character(message_array)
-    letter_array = ("a".."z").to_a << " "
-
-  end
 end
-
-
-  #
-  def self.shift_position(current_position, shift)
-    total = current_position + shift
-    caculation = (total % 27)
-    return current_position if caculation == 0
-    return caculation unless caculation == 0
-  end
-  def shift_a_position
-  end
-
-
-
-# array.inject(0, :+)
