@@ -4,7 +4,7 @@ require './lib/cryptable'
 class Enigma
   include Shiftable
   include Cryptable
-  attr_reader :key, :message, :date, :shifts
+  attr_reader :message, :key, :date, :shifts
 
   def initialize
     @shifts = []
@@ -40,7 +40,6 @@ class Enigma
     @shifts << c_shift(key, formatted_date)
     @shifts << d_shift(key, formatted_date)
     return @shifts
-
   end
 
   def generate_key
@@ -49,12 +48,14 @@ class Enigma
 
   def date_code(date_in)
     if date_in.to_s.size == 6 ; return date_in
-    elsif date_in.to_s.size > 6
+    elsif date_in.to_s.size == 25
         code_date = []
           code_date << date_in.day.to_s.to_s.rjust(2,'0')
           code_date << date_in.month.to_s.rjust(2,'0')
           code_date << date_in.year.to_s[2..3]
      return code_date.join
+   else
+     "Your date has an error."
       end
   end
 end

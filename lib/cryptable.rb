@@ -5,15 +5,15 @@ module Cryptable
   end
 
   def shift_position(letter_index, which_shift)
-    total = letter_index + which_shift
-    caculation = (total % 27)
+    sum = letter_index + which_shift
+    caculation = (sum % 27)
     return letter_index if caculation == 0
     return caculation unless caculation == 0
   end
 
   def unshift_position(letter_index, which_shift)
-    total = letter_index - which_shift
-    caculation = (total % 27)
+    difference = letter_index - which_shift
+    caculation = (difference % 27)
     return letter_index if caculation == 0
     return caculation unless caculation == 0
   end

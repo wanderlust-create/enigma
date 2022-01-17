@@ -30,7 +30,6 @@ RSpec.describe 'Enigma encript' do
   it 'can generate random 10 digit number as string' do
 
     output = enigma.encrypt()
-
     expect(output[:key].size).to eq(5)
   end
 
@@ -46,7 +45,7 @@ RSpec.describe 'Enigma encript' do
     expect(enigma.shift_values("02715", "040895")).to eq(expected)
   end
 
-  end
+end
 
   RSpec.describe 'Enigma decript' do
     let(:enigma) {Enigma.new}
@@ -59,4 +58,6 @@ RSpec.describe 'Enigma encript' do
   }
   expect(enigma.decrypt("keder ohulw", "02715", "040895")).to eq(expected)
   end
+
+
 end
