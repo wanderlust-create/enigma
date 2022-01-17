@@ -1,10 +1,10 @@
 require './lib/shiftable'
-require './lib/encryptable'
+require './lib/cryptable'
 require './lib/enigma'
 
 RSpec.describe 'Shiftable' do
 
-  let(:encrypt) {Enigma.new('12345','130122')}
+  let(:encrypt) {Enigma.new}
 
   it 'can calculate the keys' do
     expect(encrypt.calculate_keys('12345',0,1)).to eq(12)

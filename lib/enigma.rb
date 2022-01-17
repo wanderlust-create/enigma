@@ -1,52 +1,60 @@
 require './lib/shiftable'
-require './lib/encryptable'
+require './lib/cryptable'
 
 class Enigma
   include Shiftable
-  include Encryptable
+  include Cryptable
   attr_reader :key, :message, :date, :shifts
 
-  def initialize (key = self.generate_key, date = Time.new)
-    @message = File.read('message.txt')
-    @key = key
-    @date = date
-    @shifts = shifts
+  def initialize
+    @shifts = []
   end
 
-  def shifts
-    shift_values = Array.new
-    shift_values << a_shift(@key, @date)
-    shift_values << b_shift(@key, @date)
-    shift_values << c_shift(@key, @date)
-    shift_values << d_shift(@key, @date)
-    shift_values
+  def encrypt(message = File.read('message.txt').downcase, key = generate_key, date_in = Time.new)
+    @shifts.clear
+    formatted_date = date_code(date_in)
+    shift_values(key, formatted_date)
+    encrypt_output = {
+    :encryption => encrypt_message(message),
+    :key => key,
+    :date => formatted_date
+    }
+    return encrypt_output
+  end
+
+  def decrypt(message = File.read('message.txt').downcase, key = generate_key, date_in = Time.new)
+    @shifts.clear
+    formatted_date = date_code(date_in)
+    shift_values(key, formatted_date)
+    decrypt_output = {
+    :decryption => decrypt_message(message),
+    :key => key,
+    :date => formatted_date
+    }
+    return decrypt_output
+  end
+
+  def shift_values(key, formatted_date)
+    @shifts << a_shift(key, formatted_date)
+    @shifts << b_shift(key, formatted_date)
+    @shifts << c_shift(key, formatted_date)
+    @shifts << d_shift(key, formatted_date)
+    return @shifts
+
   end
 
   def generate_key
     5.times.map{rand(9)}.join
   end
 
-  def date_code
-    code_data = []
-    code_data << @date.day.to_s.to_s.rjust(2,'0')
-    code_data << @date.month.to_s.rjust(2,'0')
-    code_data << @date.year.to_s[2..3]
-    code_data.flatten.join
+  def date_code(date_in)
+    if date_in.to_s.size == 6 ; return date_in
+    elsif date_in.to_s.size > 6
+        code_date = []
+          code_date << date_in.day.to_s.to_s.rjust(2,'0')
+          code_date << date_in.month.to_s.rjust(2,'0')
+          code_date << date_in.year.to_s[2..3]
+     return code_date.join
+      end
   end
-
-  def encrypt_now
-    encrypt_message(@message)
-  end
-
-
-  def decrypt
-  end
-
 end
-
-go = Enigma.new('02715','040895')
-
-
-# binding.pry
-
-p

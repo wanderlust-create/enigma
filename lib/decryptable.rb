@@ -1,6 +1,4 @@
-
-module Encryptable
-
+module Decryptable
   def letter_array
     letter_array = ("a".."z").to_a << " "
   end
@@ -34,4 +32,21 @@ module Encryptable
     end
     encrypted_message.join
   end
+end
+
+  def decrypt_message(message)
+    shift_value = @shifts
+    decrypted_message = []
+    message.each_char do |letter|
+      if letter_array.include?(letter)
+        shifted_letter = shift(letter, shift_value[0])
+        decrypted_message << shifted_letter
+        shift_value.rotate!
+      elsif
+        decrypted_message << letter
+      end
+    end
+    encrypted_message.join
+  end
+end
 end

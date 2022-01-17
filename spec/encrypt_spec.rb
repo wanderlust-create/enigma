@@ -1,40 +1,62 @@
 require './lib/enigma'
-require 'pry'
 
-RSpec.describe 'Enigma' do
-  let(:encrypt1) {Enigma.new}
-  let(:encrypt2) {Enigma.new('02715','040895')}
+
+RSpec.describe 'Enigma encript' do
+  let(:enigma) {Enigma.new}
 
   it 'exists' do
-    expect(encrypt1).to be_a Enigma
+
+    expect(enigma).to be_a Enigma
+  end
+
+  it 'will create an encrypt output' do
+    expected = {
+    encryption: "keder ohulw",
+    key: "02715",
+    date: "040895"
+  }
+  expect(enigma.encrypt("hello world", "02715", "040895")).to eq(expected)
   end
 
   it 'can read the message to be encrypted' do
 
+    output = enigma.encrypt()
+
     expected = (String)
 
-    expect(encrypt1.message.class).to eq(String)
+    expect(output[:encryption].class).to eq(String)
   end
 
   it 'can generate random 10 digit number as string' do
 
-    expect(encrypt1.generate_key.size).to eq(5)
+    output = enigma.encrypt()
+
+    expect(output[:key].size).to eq(5)
   end
 
   it'can generate time as DDMMYY' do
 
-    expect(encrypt1.date_code.size).to eq(6)
+    output = enigma.encrypt()
+    expect(output[:date].size).to eq(6)
   end
 
   it 'can calculate the shifts' do
 
-  expected = [3, 27, 73, 20]
-  expect(encrypt2.shifts).to eq(expected)
-end
+    expected = [3, 27, 73, 20]
+    expect(enigma.shift_values("02715", "040895")).to eq(expected)
+  end
 
-  it 'can encrypt' do
+  end
 
-    expected = ('keder, ohulw!')
-    expect(encrypt2.encrypt_now).to eq(expected)
+  RSpec.describe 'Enigma decript' do
+    let(:enigma) {Enigma.new}
+
+    it 'will create an decrypt output' do
+    expected = {
+    decryption: "hello world",
+    key: "02715",
+    date: "040895"
+  }
+  expect(enigma.decrypt("keder ohulw", "02715", "040895")).to eq(expected)
   end
 end
