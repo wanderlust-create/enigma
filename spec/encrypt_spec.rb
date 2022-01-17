@@ -3,7 +3,7 @@ require 'pry'
 
 RSpec.describe 'Enigma' do
   let(:encrypt1) {Enigma.new}
-  let(:encrypt2) {Enigma.new('02715','040895')}
+  let(:encrypt2) {Enigma.new("hello, world!", '02715','040895')}
 
   it 'exists' do
     expect(encrypt1).to be_a Enigma
@@ -30,11 +30,22 @@ RSpec.describe 'Enigma' do
 
   expected = [3, 27, 73, 20]
   expect(encrypt2.shifts).to eq(expected)
-end
+  end
 
   it 'can encrypt' do
 
     expected = ('keder, ohulw!')
-    expect(encrypt2.encrypt_now).to eq(expected)
+    expect(encrypt2.encrypt_message_now).to eq(expected)
   end
-end
+
+  it 'will create an encrypt output' do
+    enigma = Enigma.new("hello world", "02715", "040895")
+
+    expected = {
+    encryption: "keder ohulw",
+    key: "02715",
+    date: "040895"
+  }
+  expect(enigma.encrypt).to eq(expected)
+  end
+  end

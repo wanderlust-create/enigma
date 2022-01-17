@@ -2,7 +2,7 @@ require './lib/encryptable'
 require './lib/enigma'
 
 RSpec.describe 'Encryptable' do
-  let(:encrypt) {Enigma.new('02715','040895')}
+  let(:encrypt) {Enigma.new("hello, world!", '02715','040895')}
 
   it 'can generate the letter array' do
     expected = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"," "]
