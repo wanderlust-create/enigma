@@ -1,7 +1,7 @@
 require './lib/enigma'
 require 'pry'
 
-RSpec.describe 'Enigma' do
+RSpec.describe 'Enigma encript' do
   let(:enigma) {Enigma.new}
 
   it 'exists' do
@@ -47,3 +47,16 @@ RSpec.describe 'Enigma' do
   end
 
   end
+
+  RSpec.describe 'Enigma decript' do
+    let(:enigma) {Enigma.new}
+
+    it 'will create an decrypt output' do
+    expected = {
+    decryption: "hello world",
+    key: "02715",
+    date: "040895"
+  }
+  expect(enigma.decrypt("keder ohulw", "02715", "040895")).to eq(expected)
+  end
+end
