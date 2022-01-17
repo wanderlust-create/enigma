@@ -1,5 +1,5 @@
 require './lib/shiftable'
-require './lib/encryptable'
+require './lib/cryptable'
 require './lib/enigma'
 
 RSpec.describe 'Shiftable' do

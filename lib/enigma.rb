@@ -1,9 +1,9 @@
 require './lib/shiftable'
-require './lib/encryptable'
+require './lib/cryptable'
 
 class Enigma
   include Shiftable
-  include Encryptable
+  include Cryptable
   attr_reader :key, :message, :date, :shifts
 
   def initialize
@@ -20,6 +20,18 @@ class Enigma
     :date => formatted_date
     }
     return encrypt_output
+  end
+
+  def decrypt(message = File.read('message.txt').downcase, key = generate_key, date_in = Time.new)
+    @shifts.clear
+    formatted_date = date_code(date_in)
+    shift_values(key, formatted_date)
+    decrypt_output = {
+    :decryption => decrypt_message(message),
+    :key => key,
+    :date => formatted_date
+    }
+    return decrypt_output
   end
 
   def shift_values(key, formatted_date)
@@ -45,15 +57,4 @@ class Enigma
      return code_date.join
       end
   end
-
-
-  def decrypt
-  end
-
 end
-
-# go = Enigma.new
-#
-# require "pry"; binding.pry
-#
-# p

@@ -1,5 +1,5 @@
 require './lib/enigma'
-require 'pry'
+
 
 RSpec.describe 'Enigma encript' do
   let(:enigma) {Enigma.new}

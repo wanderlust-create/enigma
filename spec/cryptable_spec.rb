@@ -1,7 +1,7 @@
-require './lib/encryptable'
+require './lib/cryptable'
 require './lib/enigma'
 
-RSpec.describe 'Encryptable' do
+RSpec.describe 'Cryptable' do
   let(:encrypt) {Enigma.new}
 
   it 'can generate the letter array' do
