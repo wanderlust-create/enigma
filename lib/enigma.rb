@@ -12,41 +12,37 @@ class Enigma
     @date_in = nil
   end
 
-  def encrypt(message = File.read('message.txt').downcase, key = generate_key, date_in = Time.new)
+  def encrypt(message = File.read('message.txt').downcase, key = generate_key, date_in = Time.now.strftime("%d%m%y"))
     @shifts.clear
-    @key = nil
-    @date_in = nil
     @key = key
     @date_in = date_in
-    formatted_date = date_code(date_in)
-    shift_values(key, formatted_date)
+    shift_values(key, date_in)
     encrypt_output = {
     :encryption => encrypt_message(message),
     :key => key,
-    :date => formatted_date
+    :date => date_in
     }
     return encrypt_output
   end
 
-  def decrypt(message = File.read('message.txt').downcase, key = generate_key, date_in = Time.new)
+  def decrypt(message = File.read('message.txt').downcase, key = self.generate_key, date_in = Time.now.strftime("%d%m%y"))
     @shifts.clear
     @key = key
     @date_in = date_in
-    formatted_date = date_code(date_in)
-    shift_values(key, formatted_date)
+    shift_values(key, date_in)
     decrypt_output = {
     :decryption => decrypt_message(message),
     :key => key,
-    :date => formatted_date
+    :date => date_in
     }
     return decrypt_output
   end
 
-  def shift_values(key, formatted_date)
-    @shifts << a_shift(key, formatted_date)
-    @shifts << b_shift(key, formatted_date)
-    @shifts << c_shift(key, formatted_date)
-    @shifts << d_shift(key, formatted_date)
+  def shift_values(key, date_in)
+    @shifts << a_shift(@key, @date_in)
+    @shifts << b_shift(@key, @date_in)
+    @shifts << c_shift(@key, @date_in)
+    @shifts << d_shift(@key, @date_in)
     return @shifts
   end
 
@@ -54,16 +50,4 @@ class Enigma
     5.times.map{rand(9)}.join
   end
 
-  def date_code(date_in)
-    if date_in.to_s.size == 6 ; return date_in
-    elsif date_in.to_s.size == 25
-        code_date = []
-          code_date << date_in.day.to_s.to_s.rjust(2,'0')
-          code_date << date_in.month.to_s.rjust(2,'0')
-          code_date << date_in.year.to_s[2..3]
-     return code_date.join
-   else
-     "Your date has an error."
-      end
-  end
 end
