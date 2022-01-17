@@ -39,12 +39,6 @@ RSpec.describe 'Enigma encript' do
     expect(output[:date].size).to eq(6)
   end
 
-  it 'can calculate the shifts' do
-
-    expected = [3, 27, 73, 20]
-    expect(enigma.shift_values("02715", "040895")).to eq(expected)
-  end
-
 end
 
   RSpec.describe 'Enigma decript' do
@@ -58,6 +52,5 @@ end
   }
   expect(enigma.decrypt("keder ohulw", "02715", "040895")).to eq(expected)
   end
-
 
 end

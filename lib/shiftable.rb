@@ -1,4 +1,3 @@
-
 module Shiftable
 
   def square_me(date_in)
