@@ -4,14 +4,20 @@ require './lib/cryptable'
 class Enigma
   include Shiftable
   include Cryptable
-  attr_reader :message, :key, :date, :shifts
+  attr_reader :message, :key, :date_in, :shifts
 
   def initialize
     @shifts = []
+    @key = nil
+    @date_in = nil
   end
 
   def encrypt(message = File.read('message.txt').downcase, key = generate_key, date_in = Time.new)
     @shifts.clear
+    @key = nil
+    @date_in = nil
+    @key = key
+    @date_in = date_in
     formatted_date = date_code(date_in)
     shift_values(key, formatted_date)
     encrypt_output = {
@@ -24,6 +30,8 @@ class Enigma
 
   def decrypt(message = File.read('message.txt').downcase, key = generate_key, date_in = Time.new)
     @shifts.clear
+    @key = key
+    @date_in = date_in
     formatted_date = date_code(date_in)
     shift_values(key, formatted_date)
     decrypt_output = {

@@ -1,1 +1,1 @@
-{:encryption=>"Hhblq,cWegng!qHdyczhblj?", :key=>"53625", :date=>"170122"}
+{:encryption=>"@#jasz!jazbjozcjm po egwel1234", :key=>"82648", :date=>"240818"}
