@@ -2,7 +2,7 @@ require './lib/encryptable'
 require './lib/enigma'
 
 RSpec.describe 'Encryptable' do
-  let(:encrypt) {Enigma.new("hello, world!", '02715','040895')}
+  let(:encrypt) {Enigma.new}
 
   it 'can generate the letter array' do
     expected = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"," "]
@@ -26,11 +26,6 @@ RSpec.describe 'Encryptable' do
   it 'can return a shifted letter' do
     expect(encrypt.shift('h', 3)).to eq('k')
     expect(encrypt.shift('v', 27)).to eq('v')
-  end
-
-  it 'can encrypt a message' do
-    expected = ('keder, ohulw!')
-    expect(encrypt.encrypt_message('hello, world!')).to eq(expected)
   end
 
 end
